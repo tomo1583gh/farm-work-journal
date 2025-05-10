@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WorkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// ログイン済みユーザーだけがアクセス出来るページ群
+Route::middleware(['auth'])->group(function () {
+    // トップページ（ルートURL)にアクセスしたら作業一覧へ
+    Route::get('/', [WorkController::class,'index'])->name('home');
+
+    Route::resource('works', WorkController::class);
 });

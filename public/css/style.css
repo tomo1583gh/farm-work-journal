@@ -1,0 +1,152 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #5d8b61;
+    color: #fff;
+    padding: 15px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+a {
+    color: #2b7a78;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+}
+
+header h1 a {
+    color: #ffffff;
+    /* 明るい白で目立たせる */
+    text-decoration: none;
+}
+
+header h1 a:hover {
+    color: #ffeb3b;
+    /* ホバー時に黄色でさらに目立たせてもOK */
+}
+
+/* ヘッダー内のナビゲーションリンク（ログイン・会員登録） */
+header nav a {
+    color: #ffffff;
+    /* 白で目立たせる */
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    color: #ffeb3b;
+    /* ホバー時に黄色などにしてさらに目立たせる */
+}
+
+/* login,register */
+.auth-wrapper {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px;
+    border: 1px solid #ddd;
+    background-color: #fefefe;
+    border-radius: 8px;
+}
+
+.auth-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 30px;
+    color: #8b7969;
+}
+
+.auth-form .form-row {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.auth-form .error {
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* show */
+.work-detail {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.work-detail p {
+    margin: 10px 0;
+}
+
+.actions a {
+    margin-right: 10px;
+    color: #2b7a78;
+}
+
+/* show */
+.work-detail {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.work-detail p {
+    margin: 10px 0;
+}
+
+.actions a {
+    margin-right: 10px;
+    color: #2b7a78;
+}

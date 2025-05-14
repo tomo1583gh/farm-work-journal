@@ -13,6 +13,7 @@
     <thead>
         <tr>
             <th>作業日</th>
+            <th>天気</th>
             <th>タイトル</th>
             <th>カテゴリ</th>
             <th>作業時間（分）</th>
@@ -24,6 +25,7 @@
         @foreach($works as $work)
         <tr>
             <td>{{ $work->work_date }}</td>
+            <td>{{ $work->weather }}</td>
             <td>{{ $work->title }}</td>
             <td>{{ $work->category_name }}</td>
             <td>{{ $work->work_time }}</td>

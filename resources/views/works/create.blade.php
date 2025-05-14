@@ -12,6 +12,19 @@
     </div>
 
     <div>
+        <label>天気:</label>
+        <select name="weather">
+            <option value="">選択してください</option>
+            <option value="晴れ" {{ old('weather') == '晴れ' ? 'selected' : '' }}>晴れ</option>
+            <option value="曇り" {{ old('weather') == '曇り' ? 'selected' : '' }}>曇り</option>
+            <option value="雨" {{ old('weather') == '雨' ? 'selected' : '' }}>雨</option>
+            <option value="雪" {{ old('weather') == '雪' ? 'selected' : '' }}>雪</option>
+        </select>
+        @error('weather') <div class="error">{{ $message }}</div> @enderror
+    </div>
+
+
+    <div>
         <label>タイトル:</label> <!-- 日本語 -->
         <input type="text" name="title" value="{{ old('title', $work->title ?? '') }}">
         @error('title') <div class="error">{{ $message }}</div> @enderror

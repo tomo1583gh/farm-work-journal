@@ -5,6 +5,7 @@
 
 <div class="work-detail">
     <p><strong>作業日：</strong>{{ $work->work_date }}</p>
+    <p><strong>天気：</strong>{{ $work->weather }}</p>
     <p><strong>タイトル：</strong>{{ $work->title }}</p>
     <p><strong>カテゴリ:</strong>{{ $work->category_name }}</p>
     <p><strong>作業時間（分）:</strong>{{ $work->work_time }}</p>

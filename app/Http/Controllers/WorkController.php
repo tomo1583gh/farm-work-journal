@@ -43,6 +43,7 @@ class WorkController extends Controller
             'work_time' => 'nullable|integer|min:0',
             'content' => 'nullable',
             'work_date' => 'required|date',
+            'weather' => 'nullable|string|max:255',
         ]);
 
         $validated['user_id'] = auth()->id();
@@ -91,6 +92,7 @@ class WorkController extends Controller
             'work_time' => 'nullable|integer|min:0',
             'content' => 'nullable',
             'work_date' => 'required|date',
+            'weather' => 'nullable|string|max:255',
         ]);
 
         $work = Work::where('user_id', auth()->id())->findOrFail($id);

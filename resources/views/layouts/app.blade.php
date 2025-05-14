@@ -12,6 +12,14 @@
     <header>
         <div class="header-container">
             <h1><a href="{{ route('works.index') }}">農作業日誌</a></h1>
+
+            <form method="GET" action="{{ route('works.index') }}" class="search-form">
+                <input type="text" name="keyword" placeholder="キーワード" value="{{ request('keyword') }}">
+                <input type="date" name="start_date" value="{{ request('start_date') }}">
+                <input type="date" name="end_date" value="{{ request('end_date') }}">
+                <button type="submit">検索</button>
+            </form>
+
             <nav>
                 @auth
                 <span>{{ Auth::user()->name }}さん</span> /

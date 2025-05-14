@@ -18,6 +18,7 @@
             <th>カテゴリ</th>
             <th>作業時間（分）</th>
             <th>詳細</th>
+            <th>画像</th>
             <th>操作</th>
         </tr>
     </thead>
@@ -32,6 +33,12 @@
             <td>
                 <a href="{{ route('works.show', $work->id) }}">{{ $work->title }}</a>
             </td>
+            <td>
+                @if($work->image_path)
+                <img src="{{ asset('storage/' . $work->image_path) }}" style="width: 80px; height: auto;">
+                @endif
+            </td>
+
             <td>
                 <a href="{{ route('works.edit', $work) }}">編集</a> |
                 <form action="{{ route('works.destroy', $work) }}" method="POST" style="display:inline;">

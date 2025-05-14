@@ -11,6 +11,12 @@
     <p><strong>作業時間（分）:</strong>{{ $work->work_time }}</p>
     <p><strong>内容：</strong></p>
     <p>{!! nl2br(e($work->content)) !!}</p>
+<!-- 作業写真 -->
+    @if($work->image_path)
+        <div class="work-image">
+            <img src="{{ asset('storage/' . $work->image_path) }}" alt="作業画像">
+        </div>
+    @endif
 </div>
 
 <div class="actions">

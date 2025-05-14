@@ -3,7 +3,7 @@
 @section('content')
 <h2>作業の新規登録</h2>
 
-<form action="{{ route('works.store') }}" method="POST">
+<form action="{{ route('works.store') }}" method="POST" enctype="multipart/form-data" class="work-form">
     @csrf
     <div>
         <label>作業日:</label> <!-- 日本語 -->
@@ -23,7 +23,6 @@
         @error('weather') <div class="error">{{ $message }}</div> @enderror
     </div>
 
-
     <div>
         <label>タイトル:</label> <!-- 日本語 -->
         <input type="text" name="title" value="{{ old('title', $work->title ?? '') }}">
@@ -40,6 +39,12 @@
         <label>作業時間（分）:</label> <!-- 日本語 -->
         <input type="number" name="work_time" value="{{ old('work_time', $work->work_time ?? '') }}">
         @error('work_time') <div class="error">{{ $message }}</div> @enderror
+    </div>
+
+    <div>
+        <label>作業写真：</label>
+        <input type="file" name="image">
+        @error('image') <div class="error">{{ $message }}</div> @enderror
     </div>
 
     <div>

@@ -38,7 +38,7 @@ class CreateWorksTable extends Migration
         Schema::table(
             'works',
             function (Blueprint $table) {
-                $table->dropColumn(['crop_name', 'work_time']);
+                $table->dropColumn(['category_name', 'work_time']);
         });
     }
 }

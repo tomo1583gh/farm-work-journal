@@ -3,7 +3,7 @@
 @section('content')
 <h2>作業の編集</h2>
 
-<form action="{{ route('works.update', $work) }}" method="POST">
+<form action="{{ route('works.update', $work) }}" method="POST" enctype="multipart/form-data" class="work-form">
     @csrf
     @method('PUT')
 
@@ -34,7 +34,7 @@
 
     <div>
         <label>カテゴリ:</label> <!-- 日本語 -->
-        <input type="text" name="crop_name" value="{{ old('category_name', $work->category_name ?? '') }}">
+        <input type="text" name="category_name" value="{{ old('category_name', $work->category_name ?? '') }}">
         @error('crop_name') <div class="error">{{ $message }}</div> @enderror
     </div>
 
@@ -44,6 +44,11 @@
         @error('work_time') <div class="error">{{ $message }}</div> @enderror
     </div>
 
+    <div>
+        <label>作業写真：</label>
+        <input type="file" name="image">
+        @error('image') <div class="error">{{ $message }}</div> @enderror
+    </div>
 
     <div>
         <label>内容:</label> <!-- 日本語 -->

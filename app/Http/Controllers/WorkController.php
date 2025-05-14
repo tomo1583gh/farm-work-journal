@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\work;
+use App\Models\Work;
+use Illuminate\Support\Facades\Storage;
 
 class WorkController extends Controller
 {
@@ -13,9 +14,30 @@ class WorkController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $works = Work::where('user_id', auth()->id())->latest()->paginate(10);
+        $query = Work::where('user_id', auth()->id());
+
+        // キーワード検索
+        if ($request->filled('keyword')) {
+            $keyword = mb_convert_kana(trim($request->keyword), 's');
+            $query->where(function ($q) use ($keyword) {
+                $q->where('title', 'like', "%{$keyword}%")
+                    ->orWhere('category_name', 'like', "%{$keyword}%")
+                    ->orWhere('content', 'like', "%{$keyword}%");
+            });
+        }
+        // 期間検索
+        if ($request->filled('start_date')) {
+            $query->whereDate('work_date', '>=', $request->start_date);
+        }
+
+        if ($request->filled('end_date')) {
+            $query->whereDate('work_date', '<=', $request->end_date);
+        }
+
+        $works = $query->latest()->paginate(10);
+
         return view('works.index', compact('works'));
     }
 
@@ -44,7 +66,12 @@ class WorkController extends Controller
             'content' => 'nullable',
             'work_date' => 'required|date',
             'weather' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $validated['image_path'] = $request->file('image')->store('works', 'public');
+        }
 
         $validated['user_id'] = auth()->id();
 
@@ -93,9 +120,21 @@ class WorkController extends Controller
             'content' => 'nullable',
             'work_date' => 'required|date',
             'weather' => 'nullable|string|max:255',
+            'image' => 'nullable|image|max:2048',
         ]);
 
         $work = Work::where('user_id', auth()->id())->findOrFail($id);
+
+        // ★ 元画像削除 + 新画像保存
+        if ($request->hasFile('image')) {
+            // 古い画像を削除
+            if ($work->image_path && Storage::disk('public')->exists($work->image_path)) {
+                Storage::disk('public')->delete($work->image_path);
+            }
+            // 新しい画像を保存
+            $validated['image_path'] = $request->file('image')->store('works', 'public');
+        }
+
         $work->update($validated);
 
         return redirect()->route('works.index')->with('message', '作業を更新しました');

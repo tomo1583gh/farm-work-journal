@@ -45,6 +45,9 @@
     <footer>
         <small>&copy; {{ date('Y') }} 農作業日誌アプリ</small>
     </footer>
+
+    @yield('scripts')
+
 </body>
 
 </html>

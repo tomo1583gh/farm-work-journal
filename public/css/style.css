@@ -413,4 +413,11 @@ header nav a:hover {
     .header-container nav {
         margin-top: 10px;
     }
+
+    .menu-area {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+    }
 }

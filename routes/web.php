@@ -20,4 +20,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [WorkController::class,'index'])->name('home');
 
     Route::resource('works', WorkController::class);
+
+    // カレンダー表示ページ
+    Route::get('/works/calendar', [WorkController::class, 'calendar'])->name('works.calendar');
+
+    Route::get('/works/events', [WorkController::class, 'events']); // JSON用API
 });
+
+

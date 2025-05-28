@@ -153,4 +153,24 @@ class WorkController extends Controller
 
         return redirect()->route('works.index')->with('message', '作業を削除しました');
     }
+
+    public function calendar()
+    {
+        return view('works.calendar');
+    }
+
+    public function events()
+    {
+        $works = \App\Models\Work::all();
+
+        $events = $works->map(function ($work) {
+            return [
+                'id' => $work->id,
+                'title' => $work->title,
+                'start' => $work->work_date,
+            ];
+        });
+
+        return response()->json($events);
+    }
 }

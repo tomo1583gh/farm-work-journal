@@ -3,7 +3,10 @@
 @section('content')
 <h2>作業一覧</h2>
 
-<a href="{{ route('works.create') }}">＋ 新しい作業を追加</a>
+<div class="mb-3 d-flex justify-content-between align-items-center">
+    <a href="{{ route('works.create') }}">＋ 新しい作業を追加</a>
+    <a href="{{ route('works.calendar') }}" class="btn btn-outline-secondary">カレンダー表示</a>
+</div>
 
 @if(session('message'))
 <div class="flash-message">{{ session('message') }}</div>
